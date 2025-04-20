@@ -621,8 +621,9 @@
           <label for="editTemplateCategory">Category:</label>
           <select id="editTemplateCategory">
             <option value="verification">Verification</option>
-            <option value="notification">Notification</option>
-            <option value="request">Request</option>
+            <option value="notification">Initial communication</option>
+            <option value="request">Document Request</option>
+            <option value="follow-up">Follow-Up</option>
             <option value="other">Other</option>
           </select>
         </div>
@@ -691,6 +692,26 @@
           { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
           // { name: 'legalName', label: 'Legal Name', required: false },
           // { name: 'dbaName', label: 'DBA Name', required: false },
+          { name: 'subject', label: 'Subject', required: false }
+        ]
+      },
+      {
+        id: 'verification-complete',
+        name: 'Initial Communication',
+        description: 'Email template to notify merchants that their verification has been completed successfully.',
+        category: 'notification',
+        subject: 'Verify your American Express Merchant Account Details - ' + '{{clicId}}',
+        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.\n\nIf you have any questions or require further assistance, please feel free to contact us.\n\n',
+        includeSignature: true,
+        variables: [
+          { name: 'recipientEmail', label: 'Recipient Email', required: true },
+          { name: 'recipientName', label: 'Recipient Name', required: true },
+          { name: 'senderName', label: 'Your Name', required: true },
+          { name: 'validationType', label: 'Validation Type', required: false },
+          { name: 'clicId', label: 'CLIC ID', required: true },
+          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
+          { name: 'legalName', label: 'Legal Name', required: false },
+          { name: 'dbaName', label: 'DBA Name', required: false },
           { name: 'subject', label: 'Subject', required: false }
         ]
       },
