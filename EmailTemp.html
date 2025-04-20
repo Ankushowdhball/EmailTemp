@@ -680,7 +680,7 @@
         description: 'Email template to notify merchants that their verification has been completed successfully.',
         category: 'verification',
         subject: 'Verify your American Express Merchant Account Details - ' + '{{clicId}}',
-        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.<br>If you have any questions or require further assistance, please feel free to contact us.\n\n',
+        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.,\nIf you have any questions or require further assistance, please feel free to contact us.\n\n',
         includeSignature: true,
         variables: [
           { name: 'recipientEmail', label: 'Recipient Email', required: true },
