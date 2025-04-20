@@ -733,9 +733,9 @@
         name: 'Follow-Up Email',
         description: 'Email template to follow up with merchants after sending a request.',
         category: 'notification',
-        subject: 'Follow-Up: Additional Information Needed - {{clicId}}',
-        body: 'Dear {{recipientName}},\n\nThis is a friendly reminder regarding our previous request for additional information to complete the verification of your merchant account with American Express.\n\nMerchant Details:\n- CLIC ID: {{clicId}}\n- SE Number: XXXX{{seNo}}\n\nWe appreciate your prompt attention to this matter.\n\nBest regards,\n{{senderName}}',
-        includeSignature: true,
+        subject: 'Verify your American Express Merchant Account Details - {{clicId}}',
+        body: 'Dear {{recipientName}},\n\nThis is a follow-up to our previous communication regarding your American Express Merchant Account ending in XXXXXX{{seNo}}.\n\nTo avoid disruption on your merchant account, please respond to the email or feel free to give us a call at 1-866-822-4951. We are available Monday to Friday, 10:00 am - 6:30 pm ET.\n\n\n\nThanks & Regards,\n{{senderName}}\nAmerican Express Merchant Services Team\n\n',
+        includeSignature: false,
         variables: [
           { name: 'recipientEmail', label: 'Recipient Email', required: true },
           { name: 'recipientName', label: 'Recipient Name', required: true },
