@@ -701,7 +701,7 @@
         description: 'Email template to notify merchants that their verification has been completed successfully.',
         category: 'notification',
         subject: 'Verify your American Express Merchant Account Details - ' + '{{clicId}}',
-        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.\n\nIf you have any questions or require further assistance, please feel free to contact us.\n\n',
+        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.\n\nIf you have any questions or require further assistance, please feel free to contact us.\n\n <table border="1" cellspacing="0" cellpadding="10" style="border-collapse: collapse: width: 100%; font family: Arial, sans-serif;"><tr><td style="background-color: #f2f2f2; text-align: center;"><strong>Merchant Details</strong></td></tr><tr><td><strong>CLIC ID:</strong> {{clicId}}<br><strong>SE Number:</strong> XXXX{{seNo}}<br><strong>Legal Name:</strong> {{legalName}}<br><strong>DBA Name:</strong> {{dbaName}}</td></tr></table>\n\n',
         includeSignature: true,
         variables: [
           { name: 'recipientEmail', label: 'Recipient Email', required: true },
@@ -713,23 +713,6 @@
           { name: 'legalName', label: 'Legal Name', required: false },
           { name: 'dbaName', label: 'DBA Name', required: false },
           { name: 'subject', label: 'Subject', required: false }
-        ]
-      },
-      {
-        id: 'data-request',
-        name: 'Additional Document Request',
-        description: 'Email template to request additional information from merchants.',
-        category: 'request',
-        subject: 'Action Required: Additional Information Needed - {{clicId}}',
-        body: 'Dear {{recipientName}},\n\nWe require additional information to proceed with the verification of your merchant account with American Express.\n\nMerchant Details:\n- CLIC ID: {{clicId}}\n- SE Number: XXXX{{seNo}}\n\nPlease provide the following information at your earliest convenience:\n{{requestDetails}}\n\nIf you have any questions, please don\'t hesitate to contact us.\n\nThank you for your cooperation.\n\nBest regards,\n{{senderName}}',
-        includeSignature: true,
-        variables: [
-          { name: 'recipientEmail', label: 'Recipient Email', required: true },
-          { name: 'recipientName', label: 'Recipient Name', required: true },
-          { name: 'senderName', label: 'Your Name', required: true },
-          { name: 'clicId', label: 'CLIC ID', required: true },
-          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
-          { name: 'requestDetails', label: 'Request Details', required: true }
         ]
       },
       {
