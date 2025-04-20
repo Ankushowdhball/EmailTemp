@@ -710,6 +710,71 @@
           { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
           { name: 'requestDetails', label: 'Request Details', required: true }
         ]
+      },
+      {
+        id: 'data-request',
+        name: 'Additional Document Request',
+        description: 'Email template to request additional information from merchants.',
+        category: 'request',
+        subject: 'Action Required: Additional Information Needed - {{clicId}}',
+        body: 'Dear {{recipientName}},\n\nWe require additional information to proceed with the verification of your merchant account with American Express.\n\nMerchant Details:\n- CLIC ID: {{clicId}}\n- SE Number: XXXX{{seNo}}\n\nPlease provide the following information at your earliest convenience:\n{{requestDetails}}\n\nIf you have any questions, please don\'t hesitate to contact us.\n\nThank you for your cooperation.\n\nBest regards,\n{{senderName}}',
+        includeSignature: true,
+        variables: [
+          { name: 'recipientEmail', label: 'Recipient Email', required: true },
+          { name: 'recipientName', label: 'Recipient Name', required: true },
+          { name: 'senderName', label: 'Your Name', required: true },
+          { name: 'clicId', label: 'CLIC ID', required: true },
+          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
+          { name: 'requestDetails', label: 'Request Details', required: true }
+        ]
+      },
+      {
+        id: 'follow-up',
+        name: 'Follow-Up Email',
+        description: 'Email template to follow up with merchants after sending a request.',
+        category: 'notification',
+        subject: 'Follow-Up: Additional Information Needed - {{clicId}}',
+        body: 'Dear {{recipientName}},\n\nThis is a friendly reminder regarding our previous request for additional information to complete the verification of your merchant account with American Express.\n\nMerchant Details:\n- CLIC ID: {{clicId}}\n- SE Number: XXXX{{seNo}}\n\nWe appreciate your prompt attention to this matter.\n\nBest regards,\n{{senderName}}',
+        includeSignature: true,
+        variables: [
+          { name: 'recipientEmail', label: 'Recipient Email', required: true },
+          { name: 'recipientName', label: 'Recipient Name', required: true },
+          { name: 'senderName', label: 'Your Name', required: true },
+          { name: 'clicId', label: 'CLIC ID', required: true },
+          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true }
+        ]
+      },
+      {
+        id: 'invalid-docs',
+        name: 'Invalid Documents',
+        description: 'Email template to notify merchants about invalid documents submitted.',
+        category: 'request',
+        subject: 'Action Required: Invalid Documents Submitted - {{clicId}}',
+        body: 'Dear {{recipientName}},\n\nWe have received your documents for verification, but unfortunately, some of them are invalid or incomplete.\n\nMerchant Details:\n- CLIC ID: {{clicId}}\n- SE Number: XXXX{{seNo}}\n\nPlease review the attached documents and resubmit the required information at your earliest convenience.\n\nBest regards,\n{{senderName}}',
+        includeSignature: true,
+        variables: [
+          { name: 'recipientEmail', label: 'Recipient Email', required: true },
+          { name: 'recipientName', label: 'Recipient Name', required: true },
+          { name: 'senderName', label: 'Your Name', required: true },
+          { name: 'clicId', label: 'CLIC ID', required: true },
+          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true }
+        ]
+      },
+      {
+        id: 'other',
+        name: 'Other',
+        description: 'Email template for other purposes.',
+        category: 'other',
+        subject: 'Important Update - {{clicId}}',
+        body: 'Dear {{recipientName}},\n\nWe have an important update regarding your merchant account with American Express.\n\nMerchant Details:\n- CLIC ID: {{clicId}}\n- SE Number: XXXX{{seNo}}\n\nPlease contact us for more information.\n\nBest regards,\n{{senderName}}',
+        includeSignature: true,
+        variables: [
+          { name: 'recipientEmail', label: 'Recipient Email', required: true },
+          { name: 'recipientName', label: 'Recipient Name', required: true },
+          { name: 'senderName', label: 'Your Name', required: true },
+          { name: 'clicId', label: 'CLIC ID', required: true },
+          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true }
+        ]
       }
     ];
 
