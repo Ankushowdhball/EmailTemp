@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Valor - Email Templates</title>
+  <style>
+    /**********************************************
+     * GLOBAL STYLES
+     **********************************************/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background-color: #f4f6f8; 
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container { 
+      padding: 2rem; 
+      max-width: 1200px; 
+      margin: 2rem auto; 
+      background-color: white; 
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    }
+
+    h1, h2, h3 {
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    h2 { 
+      text-align: center; 
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    button { 
+      display: block; 
+      padding: 12px; 
+      background-color: #007bff; 
+      color: white; 
+      font-size: 16px; 
+      border: none; 
+      border-radius: 5px; 
+      margin-top: 20px; 
+      cursor: pointer; 
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+    
+    button:hover { 
+      background-color: #0056b3; 
+    }
+
+    input, textarea, select { 
+      width: 100%; 
+      padding: 10px; 
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc; 
+      border-radius: 5px; 
+      font-family: inherit;
+      font-size: 15px;
+    }
+
+    label { 
+      margin-top: 1rem; 
+      display: block; 
+      font-weight: bold; 
+      color: #555; 
+    }
+
+    .hidden { 
+      display: none !important; 
+    }
+
+    /**********************************************
+     * NAVBAR STYLES
+     **********************************************/
+    nav { 
+      background-color: #007bff; 
+      padding: 1rem 2rem; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      color: white; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    nav ul { 
+      list-style: none; 
+      display: flex; 
+      gap: 2rem; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    nav ul li { 
+      cursor: pointer; 
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    nav ul li:hover { 
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .logo { 
+      font-size: 24px; 
+      font-weight: bold; 
+    }
+
+    .active-nav {
+      background-color: rgba(255, 255, 255, 0.2);
+      font-weight: bold;
+    }
+
+    /**********************************************
+     * EMAIL SECTION STYLES 
+     **********************************************/
+    #email {
+      max-width: 800px;
+    }
+
+    #emailPreview {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    #emailPreview h3 {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    #emailActions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    #emailActions button {
+      flex: 1;
+      margin: 0;
+    }
+
+    #copyButton {
+      background-color: #28a745;
+    }
+
+    #copyButton:hover {
+      background-color: #218838;
+    }
+
+    .email-templates-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .email-templates-header h2 {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      margin-top: 0;
+      padding: 8px 15px;
+      width: auto;
+    }
+
+    .button-small {
+      font-size: 14px;
+    }
+
+    .button-green {
+      background-color: #28a745;
+    }
+
+    .button-green:hover {
+      background-color: #218838;
+    }
+
+    .button-orange {
+      background-color: #fd7e14;
+    }
+
+    .button-orange:hover {
+      background-color: #e36c0a;
+    }
+
+    .button-red {
+      background-color: #dc3545;
+    }
+    
+    .button-red:hover {
+      background-color: #c82333;
+    }
+
+    .template-card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .template-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .template-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .template-actions button {
+      margin: 0;
+      padding: 5px 10px;
+      font-size: 14px;
+      width: auto;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 800px;
+      width: 80%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-modal {
+      color: #888;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-modal:hover {
+      color: #333;
+    }
+
+    #templateVariablesContainer {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    #templateVariablesContainer h4 {
+      margin-bottom: 15px;
+    }
+
+    .variable-field {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .variable-field button {
+      width: auto;
+      padding: 8px;
+      margin: 0 0 0 10px;
+    }
+
+    .tab-container {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-bottom: none;
+      border-radius: 5px 5px 0 0;
+      margin-right: 5px;
+    }
+
+    .tab.active {
+      background-color: white;
+      border-bottom: 1px solid white;
+      margin-bottom: -1px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .no-templates {
+      text-align: center;
+      padding: 30px 0;
+      color: #666;
+    }
+
+    .custom-select-wrapper {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .template-select {
+      width: 100%;
+      padding: 12px;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 14px;
+      font-size: 16px;
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .variable-tag {
+      display: inline-block;
+      background-color: #e9ecef;
+      padding: 3px 8px;
+      border-radius: 3px;
+      margin: 3px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #ced4da;
+    }
+
+    .available-variables {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+      border: 1px solid #e9ecef;
+    }
+
+    .tabs-wrapper {
+      margin: 20px 0;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      margin-left: 10px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">Project Valor</div>
+    <ul id="navMenu">
+      <li onclick="navigate('home')">Home</li>
+      <li onclick="navigate('updates')">Updates</li>
+      <li onclick="navigate('knowledge')">Knowledge Base</li>
+      <li onclick="navigate('email')" class="active-nav">Email Templates</li>
+      <li onclick="navigate('dashboard')">Dashboard</li>
+      <li onclick="logout()" style="margin-left: 20px">Logout</li>
+    </ul>
+  </nav>
+
+  <!-- Email Template Section -->
+  <div id="email" class="container">
+    <div class="email-templates-header">
+      <h2>Email Templates</h2>
+      <div class="action-buttons">
+        <button onclick="showAddTemplateModal()" class="button-green">Add New Template</button>
+        <button onclick="showManageTemplatesModal()" class="button-orange">Manage Templates</button>
+      </div>
+    </div>
+
+    <!-- Template Selection -->
+    <div class="custom-select-wrapper">
+      <select id="templateSelector" class="template-select" onchange="loadSelectedTemplate()">
+        <option value="">-- Select a Template --</option>
+        <!-- Templates will be loaded here -->
+      </select>
+    </div>
+
+    <!-- Email Generator Form -->
+    <div id="emailForm">
+      <!-- Dynamic form fields will be generated here -->
+      <div id="dynamicFormFields"></div>
+      
+      <div style="display: flex; gap: 20px;">
+        <button onclick="generateEmailPreview()">Preview Email</button>
+        <button onclick="clearEmailForm()">Clear Form</button>
+      </div>
+    </div>
+    
+    <!-- Email Preview Section (Hidden by default) -->
+    <div id="emailPreview" class="hidden">
+      <h3>Email Preview</h3>
+      <p><strong>To:</strong> <span id="preview-to"></span></p>
+      <p><strong>Subject:</strong> <span id="preview-subject"></span></p>
+      <hr style="margin: 15px 0;">
+      <div id="preview-body"></div>
+      
+      <div id="emailActions">
+        <button onclick="generateEmail()">Send Email</button>
+        <button id="copyButton" onclick="copyEmailToClipboard()">Copy Email</button>
+        <button onclick="backToEmailForm()">Edit Email</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Template Modal -->
+  <div id="addTemplateModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('addTemplateModal')">&times;</span>
+      <h3>Create New Email Template</h3>
+      
+      <div class="tabs-wrapper">
+        <div class="tab-container">
+          <div class="tab active" onclick="switchTab('basicInfo', this)">Basic Info</div>
+          <div class="tab" onclick="switchTab('templateEditor', this)">Template Editor</div>
+          <div class="tab" onclick="switchTab('variablesTab', this)">Variables</div>
+        </div>
+        
+        <div id="basicInfo" class="tab-content active">
+          <label for="templateName">Template Name:</label>
+          <input type="text" id="templateName" placeholder="e.g., KYC Verification Completion">
+          
+          <label for="templateDescription">Description:</label>
+          <textarea id="templateDescription" rows="3" placeholder="Brief description of when to use this template"></textarea>
+          
+          <label for="templateCategory">Category:</label>
+          <select id="templateCategory">
+            <option value="verification">Verification Completion</option>
+            <option value="notification">Follow-Up</option>
+            <option value="request">Invalid Docs</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div id="templateEditor" class="tab-content">
+          <label for="templateSubject">Email Subject:</label>
+          <input type="text" id="templateSubject" placeholder="e.g., Verification Completed - {{clicId}}">
+          
+          <label for="templateBody">Email Body:</label>
+          <textarea id="templateBody" rows="10" placeholder="Enter your email template here. Use {{variable}} syntax for dynamic content."></textarea>
+          
+          <div class="available-variables">
+            <h4>Available Variables:</h4>
+            <div id="availableVariablesTags">
+              <!-- Will be populated with variable tags -->
+            </div>
+          </div>
+
+          <div class="toggle-container">
+            <label for="includeSignature">Include Default Signature:</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="includeSignature" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <div id="variablesTab" class="tab-content">
+          <p>Define the variables that users will need to fill in when using this template:</p>
+          
+          <div id="templateVariablesContainer">
+            <h4>Template Variables</h4>
+            <div id="variablesList">
+              <!-- Default required variables -->
+              <div class="variable-field">
+                <input type="text" placeholder="Variable name" value="recipientEmail" readonly>
+                <input type="text" placeholder="Display label" value="Recipient Email" readonly>
+                <button class="button-small" disabled>Required</button>
+              </div>
+              <div class="variable-field">
+                <input type="text" placeholder="Variable name" value="recipientName" readonly>
+                <input type="text" placeholder="Display label" value="Recipient Name" readonly>
+                <button class="button-small" disabled>Required</button>
+              </div>
+              <div class="variable-field">
+                <input type="text" placeholder="Variable name" value="senderName" readonly>
+                <input type="text" placeholder="Display label" value="Your Name" readonly>
+                <button class="button-small" disabled>Required</button>
+              </div>
+            </div>
+            <button onclick="addVariableField()">+ Add Variable</button>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 15px; margin-top: 20px;">
+        <button onclick="saveTemplate()">Save Template</button>
+        <button onclick="closeModal('addTemplateModal')" style="background-color: #6c757d">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manage Templates Modal -->
+  <div id="manageTemplatesModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('manageTemplatesModal')">&times;</span>
+      <h3>Manage Email Templates</h3>
+      
+      <div id="templatesList">
+        <!-- Template cards will be inserted here -->
+        <div class="no-templates hidden">
+          <p>No templates found. Create your first template to get started.</p>
+          <button onclick="closeModal('manageTemplatesModal'); showAddTemplateModal();" class="button-green" style="width: 200px; margin: 20px auto;">Create Template</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Template Modal -->
+  <div id="editTemplateModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('editTemplateModal')">&times;</span>
+      <h3>Edit Email Template</h3>
+      
+      <div class="tabs-wrapper">
+        <div class="tab-container">
+          <div class="tab active" onclick="switchEditTab('editBasicInfo', this)">Basic Info</div>
+          <div class="tab" onclick="switchEditTab('editTemplateEditor', this)">Template Editor</div>
+          <div class="tab" onclick="switchEditTab('editVariablesTab', this)">Variables</div>
+        </div>
+        
+        <div id="editBasicInfo" class="tab-content active">
+          <input type="hidden" id="editTemplateId">
+          <label for="editTemplateName">Template Name:</label>
+          <input type="text" id="editTemplateName" placeholder="e.g., KYC Verification Completion">
+          
+          <label for="editTemplateDescription">Description:</label>
+          <textarea id="editTemplateDescription" rows="3" placeholder="Brief description of when to use this template"></textarea>
+          
+          <label for="editTemplateCategory">Category:</label>
+          <select id="editTemplateCategory">
+            <option value="verification">Verification</option>
+            <option value="notification">Notification</option>
+            <option value="request">Request</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div id="editTemplateEditor" class="tab-content">
+          <label for="editTemplateSubject">Email Subject:</label>
+          <input type="text" id="editTemplateSubject" placeholder="e.g., Verification Completed - {{clicId}}">
+          
+          <label for="editTemplateBody">Email Body:</label>
+          <textarea id="editTemplateBody" rows="10" placeholder="Enter your email template here. Use {{variable}} syntax for dynamic content."></textarea>
+          
+          <div class="available-variables">
+            <h4>Available Variables:</h4>
+            <div id="editAvailableVariablesTags">
+              <!-- Will be populated with variable tags -->
+            </div>
+          </div>
+
+          <div class="toggle-container">
+            <label for="editIncludeSignature">Include Default Signature:</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="editIncludeSignature" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <div id="editVariablesTab" class="tab-content">
+          <p>Define the variables that users will need to fill in when using this template:</p>
+          
+          <div id="editTemplateVariablesContainer">
+            <h4>Template Variables</h4>
+            <div id="editVariablesList">
+              <!-- Existing variables will be loaded here -->
+            </div>
+            <button onclick="addEditVariableField()">+ Add Variable</button>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 15px; margin-top: 20px;">
+        <button onclick="updateTemplate()">Update Template</button>
+        <button onclick="closeModal('editTemplateModal')" style="background-color: #6c757d">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Default templates to get started
+    const defaultTemplates = [
+      {
+        id: 'verification-complete',
+        name: 'Verification Complete',
+        description: 'Email template to notify merchants that their verification has been completed successfully.',
+        category: 'verification',
+        subject: 'Verify your American Express Merchant Account Details - ' + '{{clicId}}',
+        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.\nIf you have any questions or require further assistance, please feel free to contact us.\n\n',
+        includeSignature: true,
+        variables: [
+          { name: 'recipientEmail', label: 'Recipient Email', required: true },
+          { name: 'recipientName', label: 'Recipient Name', required: true },
+          { name: 'senderName', label: 'Your Name', required: true },
+          { name: 'validationType', label: 'Validation Type', required: true },
+          { name: 'clicId', label: 'CLIC ID', required: true },
+          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
+          { name: 'legalName', label: 'Legal Name', required: true },
+          { name: 'dbaName', label: 'DBA Name', required: false },
+          { name: 'subject', label: 'Subject', required: false }
+        ]
+      },
+      {
+        id: 'data-request',
+        name: 'Additional Data Request',
+        description: 'Email template to request additional information from merchants.',
+        category: 'request',
+        subject: 'Action Required: Additional Information Needed - {{clicId}}',
+        body: 'Dear {{recipientName}},\n\nWe require additional information to proceed with the verification of your merchant account with American Express.\n\nMerchant Details:\n- CLIC ID: {{clicId}}\n- SE Number: XXXX{{seNo}}\n\nPlease provide the following information at your earliest convenience:\n{{requestDetails}}\n\nIf you have any questions, please don\'t hesitate to contact us.\n\nThank you for your cooperation.\n\nBest regards,\n{{senderName}}',
+        includeSignature: true,
+        variables: [
+          { name: 'recipientEmail', label: 'Recipient Email', required: true },
+          { name: 'recipientName', label: 'Recipient Name', required: true },
+          { name: 'senderName', label: 'Your Name', required: true },
+          { name: 'clicId', label: 'CLIC ID', required: true },
+          { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
+          { name: 'requestDetails', label: 'Request Details', required: true }
+        ]
+      }
+    ];
+
+    // Store DOM elements that are frequently accessed
+    const domElements = {};
+
+    // Initialize the application
+    window.onload = function() {
+      // Initialize templates
+      initializeTemplates();
+      
+      // Populate template selector dropdown
+      populateTemplateSelector();
+    };
+
+    // Initialize templates in localStorage if they don't exist
+    function initializeTemplates() {
+      if (!localStorage.getItem('emailTemplates')) {
+        localStorage.setItem('emailTemplates', JSON.stringify(defaultTemplates));
+      }
+    }
+
+    // Populate the template selector dropdown
+    function populateTemplateSelector() {
+      const templates = getTemplates();
+      const selector = document.getElementById('templateSelector');
+      
+      // Clear existing options except the first one
+      while (selector.options.length > 1) {
+        selector.remove(1);
+      }
+      
+      // Add template options
+      templates.forEach(template => {
+        const option = document.createElement('option');
+        option.value = template.id;
+        option.textContent = template.name;
+        selector.appendChild(option);
+      });
+    }
+
+    // Get templates from localStorage
+    function getTemplates() {
+      return JSON.parse(localStorage.getItem('emailTemplates')) || [];
+    }
+
+    // Load the selected template and generate form fields
+    function loadSelectedTemplate() {
+      const templateId = document.getElementById('templateSelector').value;
+      if (!templateId) {
+        document.getElementById('dynamicFormFields').innerHTML = '';
+        return;
+      }
+      
+      const templates = getTemplates();
+      const template = templates.find(t => t.id === templateId);
+      
+      if (template) {
+        generateFormFields(template);
+      }
+    }
+
+    // Generate form fields based on the selected template
+    function generateFormFields(template) {
+      const container = document.getElementById('dynamicFormFields');
+      container.innerHTML = '';
+      
+      const formFieldsHTML = [];
+      
+      // Create grid layout for form fields
+      formFieldsHTML.push('<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">');
+      
+      // Left column
+      formFieldsHTML.push('<div>');
+      const leftFields = template.variables.slice(0, Math.ceil(template.variables.length / 2));
+      leftFields.forEach(variable => {
+        if (variable.name !== 'recipientEmail') {
+          formFieldsHTML.push(`
+            <label for="${variable.name}">${variable.label}${variable.required ? ' *' : ''}:</label>
+            <input type="text" id="${variable.name}" placeholder="Enter ${variable.label.toLowerCase()}" ${variable.required ? 'required' : ''}>
+          `);
+        }
+      });
+      formFieldsHTML.push('</div>');
+      
+      // Right column
+      formFieldsHTML.push('<div>');
+      const rightFields = template.variables.slice(Math.ceil(template.variables.length / 2));
+      rightFields.forEach(variable => {
+        if (variable.name !== 'recipientEmail') {
+          formFieldsHTML.push(`
+            <label for="${variable.name}">${variable.label}${variable.required ? ' *' : ''}:</label>
+            <input type="text" id="${variable.name}" placeholder="Enter ${variable.label.toLowerCase()}" ${variable.required ? 'required' : ''}>
+          `);
+        }
+      });
+      formFieldsHTML.push('</div>');
+      formFieldsHTML.push('</div>');
+      
+      // Recipient email field (always at the bottom, full width)
+      const emailVariable = template.variables.find(v => v.name === 'recipientEmail');
+      if (emailVariable) {
+        formFieldsHTML.push(`
+          <label for="recipientEmail">${emailVariable.label}${emailVariable.required ? ' *' : ''}:</label>
+          <input type="email" id="recipientEmail" placeholder="recipient@example.com" ${emailVariable.required ? 'required' : ''}>
+        `);
+      }
+      
+      container.innerHTML = formFieldsHTML.join('');
+    }
+
+    // Generate email preview
+    function generateEmailPreview() {
+      const templateId = document.getElementById('templateSelector').value;
+      if (!templateId) {
+        alert('Please select a template first.');
+        return;
+      }
+      
+      const templates = getTemplates();
+      const template = templates.find(t => t.id === templateId);
+      
+      if (!template) {
+        alert('Template not found.');
+        return;
+      }
+      
+      // Collect values from form fields
+      const formValues = {};
+      template.variables.forEach(variable => {
+        const input = document.getElementById(variable.name);
+        if (input) {
+          formValues[variable.name] = input.value.trim();
+        }
+      });
+      
+      // Validate required fields
+      const missingFields = [];
+      template.variables.forEach(variable => {
+        if (variable.required && (!formValues[variable.name] || formValues[variable.name].trim() === '')) {
+          missingFields.push(variable.label);
+        }
+      });
+      
+      if (missingFields.length > 0) {
+        alert(`Please fill in the following required fields:\n- ${missingFields.join('\n- ')}`);
+        return;
+      }
+      
+      // Process subject line
+      let subject = template.subject;
+      Object.keys(formValues).forEach(key => {
+        const regex = new RegExp(`{{${key}}}`, 'g');
+        subject = subject.replace(regex, formValues[key]);
+      });
+
+      // Process email body with conditional sections
+      let body = template.body;
+      
+      // Handle conditional sections with pattern {{#variable}}content{{/variable}}
+      const conditionalPattern = /{{#(\w+)}}([\s\S]*?){{\/\1}}/g;
+      body = body.replace(conditionalPattern, (match, variableName, content) => {
+        if (formValues[variableName]) {
+          return content.trim();
+        }
+        return '';
+      });
+      
+      // Replace variables in the body
+      Object.keys(formValues).forEach(key => {
+        const regex = new RegExp(`{{${key}}}`, 'g');
+        body = body.replace(regex, formValues[key]);
+      });
+      
+      // Add signature if enabled
+      if (template.includeSignature) {
+        body += '\n\n---\nThanks & Regards,\n${{formValues.senderName}} | AMERICAN EXPRESS MERCHANT SERVICES\nKNOW YOUR CUSTOMER TEAM\nPhone: (US) 1-866-882-4951 | Hours: 7:00 AM - 3:30 PM (AZ), Mon-Fri |\nEmail: KYC1@aexp.com';
+      }
+
+      // Show the preview
+      document.getElementById('preview-to').textContent = formValues.recipientEmail || 'N/A';
+      document.getElementById('preview-subject').textContent = subject;
+      document.getElementById('preview-body').innerHTML = body.replace(/\n/g, '<br>');
+      
+      // Show preview section, hide form
+      document.getElementById('emailForm').classList.add('hidden');
+      document.getElementById('emailPreview').classList.remove('hidden');
+    }
+    
+    // Go back to the email form
+    function backToEmailForm() {
+      document.getElementById('emailPreview').classList.add('hidden');
+      document.getElementById('emailForm').classList.remove('hidden');
+    }
+    
+    // Clear email form
+    function clearEmailForm() {
+      const inputs = document.querySelectorAll('#dynamicFormFields input');
+      inputs.forEach(input => {
+        input.value = '';
+      });
+    }
+    
+    // Copy email content to clipboard
+    function copyEmailToClipboard() {
+      const to = document.getElementById('preview-to').textContent;
+      const subject = document.getElementById('preview-subject').textContent;
+      const body = document.getElementById('preview-body').innerHTML.replace(/<br>/g, '\n');
+      
+      const emailContent = `To: ${to}\nSubject: ${subject}\n\n${body.replace(/<[^>]*>/g, '')}`;
+      
+      navigator.clipboard.writeText(emailContent).then(() => {
+        const copyButton = document.getElementById('copyButton');
+        copyButton.textContent = 'Copied!';
+        setTimeout(() => {
+          copyButton.textContent = 'Copy Email';
+        }, 2000);
+      }).catch(err => {
+        alert('Failed to copy email: ' + err);
+      });
+    }
+    
+    // Generate actual email using mailto link
+    function generateEmail() {
+      const to = document.getElementById('preview-to').textContent;
+      const subject = document.getElementById('preview-subject').textContent;
+      const body = document.getElementById('preview-body').innerHTML
+        .replace(/<br>/g, '\n')  // Replace <br> with line breaks
+        .replace(/<[^>]*>/g, ''); // Remove any other HTML tags
+
+      // Create mailto link
+      const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // Open default email client
+      window.location.href = mailtoLink;
+
+      // Back to template selection after a small delay
+      setTimeout(() => {
+        document.getElementById('emailPreview').classList.add('hidden');
+        document.getElementById('emailForm').classList.remove('hidden');
+        document.getElementById('templateSelector').value = '';
+        document.getElementById('dynamicFormFields').innerHTML = '';
+      }, 1000);
+    }
+    
+    // Navigation function
+    function navigate(section) {
+      // In a real app, this would navigate to different sections
+      const navItems = document.querySelectorAll('#navMenu li');
+      navItems.forEach(item => {
+        item.classList.remove('active-nav');
+      });
+      
+      const activeItem = document.querySelector(`#navMenu li[onclick="navigate('${section}')"]`);
+      if (activeItem) {
+        activeItem.classList.add('active-nav');
+      }
+      
+      if (section !== 'email') {
+        alert(`In a complete application, this would navigate to the ${section} section.`);
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      alert('In a complete application, this would log you out.');
+    }
+    
+    // Show Add Template Modal
+    function showAddTemplateModal() {
+      document.getElementById('addTemplateModal').style.display = 'block';
+      
+      // Reset form
+      document.getElementById('templateName').value = '';
+      document.getElementById('templateDescription').value = '';
+      document.getElementById('templateCategory').value = 'verification';
+      document.getElementById('templateSubject').value = '';
+      document.getElementById('templateBody').value = '';
+      document.getElementById('includeSignature').checked = true;
+      
+      // Reset variables list to just show the default ones
+      const variablesList = document.getElementById('variablesList');
+      variablesList.innerHTML = `
+        <div class="variable-field">
+          <input type="text" placeholder="Variable name" value="recipientEmail" readonly>
+          <input type="text" placeholder="Display label" value="Recipient Email" readonly>
+          <button class="button-small" disabled>Required</button>
+        </div>
+        <div class="variable-field">
+          <input type="text" placeholder="Variable name" value="recipientName" readonly>
+          <input type="text" placeholder="Display label" value="Recipient Name" readonly>
+          <button class="button-small" disabled>Required</button>
+        </div>
+        <div class="variable-field">
+          <input type="text" placeholder="Variable name" value="senderName" readonly>
+          <input type="text" placeholder="Display label" value="Your Name" readonly>
+          <button class="button-small" disabled>Required</button>
+        </div>
+      `;
+      
+      // Populate available variables
+      updateAvailableVariables();
+      
+      // Set active tab
+      switchTab('basicInfo', document.querySelector('.tab-container .tab'));
+    }
+    
+    // Show Manage Templates Modal
+    function showManageTemplatesModal() {
+      document.getElementById('manageTemplatesModal').style.display = 'block';
+      
+      // Populate templates list
+      const templates = getTemplates();
+      const templatesList = document.getElementById('templatesList');
+      
+      if (templates.length === 0) {
+        templatesList.innerHTML = `
+          <div class="no-templates">
+            <p>No templates found. Create your first template to get started.</p>
+            <button onclick="closeModal('manageTemplatesModal'); showAddTemplateModal();" class="button-green" style="width: 200px; margin: 20px auto;">Create Template</button>
+          </div>
+        `;
+      } else {
+        let templatesHTML = '';
+        
+        templates.forEach(template => {
+          templatesHTML += `
+            <div class="template-card">
+              <div class="template-header">
+                <h4>${template.name}</h4>
+                <div class="template-actions">
+                  <button onclick="editTemplate('${template.id}')" class="button-small button-orange">Edit</button>
+                  <button onclick="deleteTemplate('${template.id}')" class="button-small button-red">Delete</button>
+                </div>
+              </div>
+              <p><strong>Category:</strong> ${template.category.charAt(0).toUpperCase() + template.category.slice(1)}</p>
+              <p><strong>Description:</strong> ${template.description}</p>
+              <p><strong>Variables:</strong> ${template.variables.map(v => v.name).join(', ')}</p>
+            </div>
+          `;
+        });
+        
+        templatesList.innerHTML = templatesHTML;
+      }
+    }
+    
+    // Close modal
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+    
+    // Switch tab in Add Template modal
+    function switchTab(tabId, tabElement) {
+      // Hide all tab content
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Deactivate all tabs
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Activate selected tab and content
+      document.getElementById(tabId).classList.add('active');
+      tabElement.classList.add('active');
+    }
+    
+    // Switch tab in Edit Template modal
+    function switchEditTab(tabId, tabElement) {
+      // Hide all tab content
+      const tabContents = document.querySelectorAll('#editTemplateModal .tab-content');
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Deactivate all tabs
+      const tabs = document.querySelectorAll('#editTemplateModal .tab');
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Activate selected tab and content
+      document.getElementById(tabId).classList.add('active');
+      tabElement.classList.add('active');
+    }
+    
+    // Add variable field in the Add Template modal
+    function addVariableField() {
+      const variablesList = document.getElementById('variablesList');
+      const variableField = document.createElement('div');
+      variableField.className = 'variable-field';
+      variableField.innerHTML = `
+        <input type="text" placeholder="Variable name (camelCase)" class="variable-name">
+        <input type="text" placeholder="Display label" class="variable-label">
+        <button class="button-small button-red" onclick="removeVariableField(this)">Remove</button>
+        <label class="toggle-container" style="margin-left: 10px;">
+          <span>Required</span>
+          <label class="toggle-switch" style="transform: scale(0.7);">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+      `;
+      variablesList.appendChild(variableField);
+    }
+    
+    // Add variable field in the Edit Template modal
+    function addEditVariableField() {
+      const variablesList = document.getElementById('editVariablesList');
+      const variableField = document.createElement('div');
+      variableField.className = 'variable-field';
+      variableField.innerHTML = `
+        <input type="text" placeholder="Variable name (camelCase)" class="variable-name">
+        <input type="text" placeholder="Display label" class="variable-label">
+        <button class="button-small button-red" onclick="removeVariableField(this)">Remove</button>
+        <label class="toggle-container" style="margin-left: 10px;">
+          <span>Required</span>
+          <label class="toggle-switch" style="transform: scale(0.7);">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+      `;
+      variablesList.appendChild(variableField);
+    }
+    
+    // Remove variable field
+    function removeVariableField(button) {
+      const variableField = button.parentElement;
+      variableField.remove();
+      
+      // Update available variables
+      updateAvailableVariables();
+    }
+    
+    // Update available variables based on defined variables
+    function updateAvailableVariables() {
+      const variableFields = document.querySelectorAll('#variablesList .variable-field');
+      const availableVariablesTags = document.getElementById('availableVariablesTags');
+      availableVariablesTags.innerHTML = '';
+      
+      variableFields.forEach(field => {
+        const nameInput = field.querySelector('input:first-child');
+        if (nameInput && nameInput.value) {
+          const variableTag = document.createElement('span');
+          variableTag.className = 'variable-tag';
+          variableTag.textContent = `{{${nameInput.value}}}`;
+          variableTag.onclick = function() {
+            const templateBody = document.getElementById('templateBody');
+            const currentPos = templateBody.selectionStart;
+            const textToInsert = this.textContent;
+            templateBody.value = templateBody.value.substring(0, currentPos) + textToInsert + templateBody.value.substring(currentPos);
+            templateBody.focus();
+          };
+          availableVariablesTags.appendChild(variableTag);
+        }
+      });
+      
+      // Add conditional section example
+      const conditionalTag = document.createElement('span');
+      conditionalTag.className = 'variable-tag';
+      conditionalTag.textContent = '{{#varName}}content{{/varName}}';
+      conditionalTag.onclick = function() {
+        const templateBody = document.getElementById('templateBody');
+        const currentPos = templateBody.selectionStart;
+        const textToInsert = '{{#varName}}content here{{/varName}}';
+        templateBody.value = templateBody.value.substring(0, currentPos) + textToInsert + templateBody.value.substring(currentPos);
+        templateBody.focus();
+      };
+      availableVariablesTags.appendChild(conditionalTag);
+    }
+    
+    // Update available variables in Edit Template modal
+    function updateEditAvailableVariables() {
+      const variableFields = document.querySelectorAll('#editVariablesList .variable-field');
+      const availableVariablesTags = document.getElementById('editAvailableVariablesTags');
+      availableVariablesTags.innerHTML = '';
+      
+      variableFields.forEach(field => {
+        const nameInput = field.querySelector('input:first-child');
+        if (nameInput && nameInput.value) {
+          const variableTag = document.createElement('span');
+          variableTag.className = 'variable-tag';
+          variableTag.textContent = `{{${nameInput.value}}}`;
+          variableTag.onclick = function() {
+            const templateBody = document.getElementById('editTemplateBody');
+            const currentPos = templateBody.selectionStart;
+            const textToInsert = this.textContent;
+            templateBody.value = templateBody.value.substring(0, currentPos) + textToInsert + templateBody.value.substring(currentPos);
+            templateBody.focus();
+          };
+          availableVariablesTags.appendChild(variableTag);
+        }
+      });
+      
+      // Add conditional section example
+      const conditionalTag = document.createElement('span');
+      conditionalTag.className = 'variable-tag';
+      conditionalTag.textContent = '{{#varName}}content{{/varName}}';
+      conditionalTag.onclick = function() {
+        const templateBody = document.getElementById('editTemplateBody');
+        const currentPos = templateBody.selectionStart;
+        const textToInsert = '{{#varName}}content here{{/varName}}';
+        templateBody.value = templateBody.value.substring(0, currentPos) + textToInsert + templateBody.value.substring(currentPos);
+        templateBody.focus();
+      };
+      availableVariablesTags.appendChild(conditionalTag);
+    }
+    
+    // Save new template
+    function saveTemplate() {
+      // Get basic info
+      const name = document.getElementById('templateName').value.trim();
+      const description = document.getElementById('templateDescription').value.trim();
+      const category = document.getElementById('templateCategory').value;
+      const subject = document.getElementById('templateSubject').value.trim();
+      const body = document.getElementById('templateBody').value.trim();
+      const includeSignature = document.getElementById('includeSignature').checked;
+      
+      // Validate
+      if (!name) {
+        alert('Please enter a template name.');
+        return;
+      }
+      
+      if (!subject) {
+        alert('Please enter an email subject.');
+        return;
+      }
+      
+      if (!body) {
+        alert('Please enter an email body.');
+        return;
+      }
+      
+      // Collect variables
+      const variables = [];
+      const variableFields = document.querySelectorAll('#variablesList .variable-field');
+      
+      variableFields.forEach(field => {
+        const nameInput = field.querySelector('input:first-child');
+        const labelInput = field.querySelector('input:nth-child(2)');
+        const requiredCheckbox = field.querySelector('input[type="checkbox"]');
+        
+        if (nameInput && labelInput) {
+          variables.push({
+            name: nameInput.value,
+            label: labelInput.value,
+            required: requiredCheckbox ? requiredCheckbox.checked : (nameInput.readOnly ? true : false)
+          });
+        }
+      });
+      
+      // Generate unique ID
+      const id = `template-${Date.now()}`;
+      
+      // Create template object
+      const template = {
+        id,
+        name,
+        description,
+        category,
+        subject,
+        body,
+        includeSignature,
+        variables
+      };
+      
+      // Save to localStorage
+      const templates = getTemplates();
+      templates.push(template);
+      localStorage.setItem('emailTemplates', JSON.stringify(templates));
+      
+      // Update template selector
+      populateTemplateSelector();
+      
+      // Close modal
+      closeModal('addTemplateModal');
+      
+      // Show success message
+      alert(`Template "${name}" has been created successfully.`);
+    }
+    
+    // Edit template
+    function editTemplate(templateId) {
+      const templates = getTemplates();
+      const template = templates.find(t => t.id === templateId);
+      
+      if (!template) {
+        alert('Template not found.');
+        return;
+      }
+      
+      // Populate edit form
+      document.getElementById('editTemplateId').value = template.id;
+      document.getElementById('editTemplateName').value = template.name;
+      document.getElementById('editTemplateDescription').value = template.description;
+      document.getElementById('editTemplateCategory').value = template.category;
+      document.getElementById('editTemplateSubject').value = template.subject;
+      document.getElementById('editTemplateBody').value = template.body;
+      document.getElementById('editIncludeSignature').checked = template.includeSignature;
+      
+      // Populate variables
+      const variablesList = document.getElementById('editVariablesList');
+      variablesList.innerHTML = '';
+      
+      template.variables.forEach(variable => {
+        const variableField = document.createElement('div');
+        variableField.className = 'variable-field';
+        
+        if (['recipientEmail', 'recipientName', 'senderName'].includes(variable.name)) {
+          // Default required variables
+          variableField.innerHTML = `
+            <input type="text" placeholder="Variable name" value="${variable.name}" readonly>
+            <input type="text" placeholder="Display label" value="${variable.label}" readonly>
+            <button class="button-small" disabled>Required</button>
+          `;
+        } else {
+          variableField.innerHTML = `
+            <input type="text" placeholder="Variable name" class="variable-name" value="${variable.name}">
+            <input type="text" placeholder="Display label" class="variable-label" value="${variable.label}">
+            <button class="button-small button-red" onclick="removeVariableField(this)">Remove</button>
+            <label class="toggle-container" style="margin-left: 10px;">
+              <span>Required</span>
+              <label class="toggle-switch" style="transform: scale(0.7);">
+                <input type="checkbox" ${variable.required ? 'checked' : ''}>
+                <span class="slider"></span>
+              </label>
+            </label>
+          `;
+        }
+        
+        variablesList.appendChild(variableField);
+      });
+      
+      // Update available variables
+      updateEditAvailableVariables();
+      
+      // Close manage templates modal
+      closeModal('manageTemplatesModal');
+      
+      // Open edit template modal
+      document.getElementById('editTemplateModal').style.display = 'block';
+      
+      // Set active tab
+      switchEditTab('editBasicInfo', document.querySelector('#editTemplateModal .tab'));
+    }
+    
+    // Update template
+    function updateTemplate() {
+      const templateId = document.getElementById('editTemplateId').value;
+      
+      // Get updated values
+      const name = document.getElementById('editTemplateName').value.trim();
+      const description = document.getElementById('editTemplateDescription').value.trim();
+      const category = document.getElementById('editTemplateCategory').value;
+      const subject = document.getElementById('editTemplateSubject').value.trim();
+      const body = document.getElementById('editTemplateBody').value.trim();
+      const includeSignature = document.getElementById('editIncludeSignature').checked;
+      
+      // Validate
+      if (!name) {
+        alert('Please enter a template name.');
+        return;
+      }
+      
+      if (!subject) {
+        alert('Please enter an email subject.');
+        return;
+      }
+      
+      if (!body) {
+        alert('Please enter an email body.');
+        return;
+      }
+      
+      // Collect variables
+      const variables = [];
+      const variableFields = document.querySelectorAll('#editVariablesList .variable-field');
+      
+      variableFields.forEach(field => {
+        const nameInput = field.querySelector('input:first-child');
+        const labelInput = field.querySelector('input:nth-child(2)');
+        const requiredCheckbox = field.querySelector('input[type="checkbox"]');
+        
+        if (nameInput && labelInput) {
+          variables.push({
+            name: nameInput.value,
+            label: labelInput.value,
+            required: requiredCheckbox ? requiredCheckbox.checked : (nameInput.readOnly ? true : false)
+          });
+        }
+      });
+      
+      // Update template
+      const templates = getTemplates();
+      const templateIndex = templates.findIndex(t => t.id === templateId);
+      
+      if (templateIndex !== -1) {
+        templates[templateIndex] = {
+          ...templates[templateIndex],
+          name,
+          description,
+          category,
+          subject,
+          body,
+          includeSignature,
+          variables
+        };
+        
+        localStorage.setItem('emailTemplates', JSON.stringify(templates));
+        
+        // Update template selector
+        populateTemplateSelector();
+        
+        // Close modal
+        closeModal('editTemplateModal');
+        
+        // Show success message
+        alert(`Template "${name}" has been updated successfully.`);
+      } else {
+        alert('Template not found.');
+      }
+    }
+    
+    // Delete template
+    function deleteTemplate(templateId) {
+      if (confirm('Are you sure you want to delete this template? This action cannot be undone.')) {
+        const templates = getTemplates();
+        const updatedTemplates = templates.filter(t => t.id !== templateId);
+        
+        localStorage.setItem('emailTemplates', JSON.stringify(updatedTemplates));
+        
+        // Update template selector
+        populateTemplateSelector();
+        
+        // Refresh templates list
+        showManageTemplatesModal();
+        
+        // Show success message
+        alert('Template has been deleted successfully.');
+      }
+    }
+    
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const modals = document.getElementsByClassName('modal');
+      for (let i = 0; i < modals.length; i++) {
+        if (event.target === modals[i]) {
+          modals[i].style.display = 'none';
+        }
+      }
+    };
+  </script>
+</body>
+</html>
+
