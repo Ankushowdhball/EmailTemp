@@ -680,17 +680,17 @@
         description: 'Email template to notify merchants that their verification has been completed successfully.',
         category: 'verification',
         subject: 'Verify your American Express Merchant Account Details - ' + '{{clicId}}',
-        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.\n\nIf you have any questions or require further assistance, please feel free to contact us.\n\n',
+        body: 'Dear {{recipientName}},\n\nWe are pleased to inform you that the KYC (Know Your Customer) verification for your merchant account with American Express ending in XXXXXX{{seNo}} has been successfully completed.\n\n\n\nIf you have any questions or require further assistance, please feel free to contact us.\n\n',
         includeSignature: true,
         variables: [
           { name: 'recipientEmail', label: 'Recipient Email', required: true },
           { name: 'recipientName', label: 'Recipient Name', required: true },
           { name: 'senderName', label: 'Your Name', required: true },
-          { name: 'validationType', label: 'Validation Type', required: true },
+          // { name: 'validationType', label: 'Validation Type', required: true },
           { name: 'clicId', label: 'CLIC ID', required: true },
           { name: 'seNo', label: 'SE No (Last 4 digits)', required: true },
-          { name: 'legalName', label: 'Legal Name', required: true },
-          { name: 'dbaName', label: 'DBA Name', required: false },
+          // { name: 'legalName', label: 'Legal Name', required: true },
+          // { name: 'dbaName', label: 'DBA Name', required: false },
           { name: 'subject', label: 'Subject', required: false }
         ]
       },
@@ -886,7 +886,7 @@
       
       // Add signature if enabled
       if (template.includeSignature) {
-        body += '\n\n---\nThanks & Regards,\n{{senderName}} | AMERICAN EXPRESS MERCHANT SERVICES\nKNOW YOUR CUSTOMER TEAM\nPhone: (US) 1-866-882-4951 | Hours: 7:00 AM - 3:30 PM (AZ), Mon-Fri |\nEmail: KYC1@aexp.com';
+        body += '\n\n---\nThanks '&' Regards,\n{{formValues.senderName}} | AMERICAN EXPRESS MERCHANT SERVICES\nKNOW YOUR CUSTOMER TEAM\nPhone: (US) 1-866-882-4951 | Hours: 7:00 AM - 3:30 PM (AZ), Mon-Fri |\nEmail: KYC1@aexp.com';
       }
 
       // Show the preview
